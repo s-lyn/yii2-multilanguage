@@ -18,6 +18,12 @@ class Languages {
         return self::$all;
     }
     
+    public static function currentLangId() {
+        $arr = self::all()->getConfigCurrent();
+        return $arr ? $arr['id'] : null;
+    }
+
+
     /**
      * Определяет язык пользователя по кукам/браузеру. Если не удалось, возвращает стандартный
      * @return string   LangId (ex. "en")

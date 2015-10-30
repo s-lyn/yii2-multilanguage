@@ -77,6 +77,10 @@ class LanguagesList {
         return null;
     }
     
+    public function getConfig() {
+        return $this->languages;
+    }
+    
     public function pattern() {
         $list = [];
         foreach ($this->languages as $lang) {
@@ -85,6 +89,14 @@ class LanguagesList {
             }
         }
         return implode('|',$list);
+    }
+    
+    public function dropdownData() {
+        $data = [];
+        foreach ($this->languages as $lang) {
+            $data[ $lang['id'] ] = $lang['name'];
+        }
+        return $data;
     }
     
 }
