@@ -29,6 +29,9 @@ class Languages {
      * @return string   LangId (ex. "en")
      */
     public static function detectClientLangId() {
+        
+        $lang_id = null; //
+        
         // Ищем язык в куках пользователя
         if (isset($_COOKIE['x-language-id'])) { // Yii::$app->request->cookies
             $result = self::all()->getConfigById( $_COOKIE['x-language-id'] );
