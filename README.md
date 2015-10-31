@@ -48,7 +48,7 @@ The extension is under development.
         'showScriptName' => false,
         //'enableStrictParsing' => true,
         'multilanguageHideDefaultPrefix' => true,
-        'class' => 'pjhl\multilanguage\components\AdvancedUrlManager', // pjhl\yii2-multilanguage\components\UrlManager
+        'class' => 'pjhl\multilanguage\components\AdvancedUrlManager',
     ],
 ],
 ```
