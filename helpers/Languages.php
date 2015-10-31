@@ -30,7 +30,7 @@ class Languages {
      */
     public static function detectClientLangId() {
         
-        $lang_id = null; //
+        $lang_id = null;
         
         // Ищем язык в куках пользователя
         if (isset($_COOKIE['x-language-id'])) { // Yii::$app->request->cookies
