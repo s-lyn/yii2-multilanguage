@@ -18,7 +18,6 @@ class ChangeLanguageAsset extends AssetBundle {
     
     public $depends = [
         'yii\web\JqueryAsset',
-        'pjhl\multilanguage\assets\JQueryCookieAsset',
     ];
 
 }
