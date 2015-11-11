@@ -46,7 +46,6 @@ The extension is under development.
     'urlManager' => [
         'enablePrettyUrl' => true,
         'showScriptName' => false,
-        //'enableStrictParsing' => true,
         'multilanguageHideDefaultPrefix' => true,
         'class' => 'pjhl\multilanguage\components\AdvancedUrlManager',
     ],
@@ -62,5 +61,33 @@ use pjhl\multilanguage\components\AdvancedController;
 class SiteController extends AdvancedController {
     
 }
+```
+
+## Language selector
+
+Add this code in your view:
+
+```php
+<?php
+use pjhl\multilanguage\assets\ChangeLanguageAsset;
+ChangeLanguageAsset::register($this);
+?>
+<a href="#" class="multilanguage-set" data-language="1">EN</a>
+<a href="#" class="multilanguage-set" data-language="2">RU</a>
+```
+
+You can use more complicated switches.
+
+## Helper
+
+```php
+use pjhl\multilanguage\helpers\Languages;
+
+// Get current Lang ID
+$langId = Languages::currentLangId(); // 1
+
+// Get current language params
+$data = Languages::all()->getConfigCurrent();
+echo $data['name']; // "English"
 ```
 
