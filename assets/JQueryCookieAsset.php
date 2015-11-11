@@ -13,7 +13,7 @@ class JQueryCookieAsset extends AssetBundle {
     ];
     
     public $js = [
-        'jquery.cookie.js',
+        'src/jquery.cookie.js',
     ];
     
     public $depends = [
