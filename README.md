@@ -35,7 +35,7 @@ The extension is under development.
 
 3) Install the package through composer:
 
-    composer require pjhl/yii2-multilanguage:dev-master
+    composer require pjhl/yii2-multilanguage:~0.1.0
 
 4) Update your components:
 ```php
