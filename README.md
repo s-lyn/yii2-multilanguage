@@ -91,3 +91,71 @@ $data = Languages::all()->getConfigCurrent();
 echo $data['name']; // "English"
 ```
 
+## Backend controllers
+
+Для мультиязычных моделей нужны две таблицы, например:
+
+*page:*
+
+- id (integer PrimaryKey)
+- ... другие колонки таблицы, не нуждающиеся в переводе
+
+И связная с ней таблица:
+
+*page_content:*
+
+- id (integer PrimaryKey)
+- parent_id (integer) [для связи с page.id]
+- lang_id (smallint) [ID языка]
+- ... другие колонки таблицы (varchar, text), нуждащиеся в переводе. Пусть для примера добавим следующую.
+- text (text)
+
+1) Создаем две модели - Page.php и PageContent.php.
+
+2) Для PageController.php добавляем код (это настроит связи):
+
+```php
+public static function getModelName() {
+    return 'app\modules\Page';
+}
+
+public static function getContentModelName() {
+    return 'app\models\PageContent';
+}
+```
+
+3) Создадим Page.php, которая будет использоваться в админке:
+```php
+<?php
+
+namespace app\modules\admin\models;
+
+use pjhl\multilanguage\components\BackendModelTrait;
+
+class Page extends \app\models\Page {
+    use BackendModelTrait;
+}
+```
+
+4) В app\models\Page.php добавим код:
+```php
+/**
+ * Content model classs
+ * @return string
+ */
+public static function getContentModelName() {
+   return 'app\models\PageContent';
+}
+
+/**
+ * @return \yii\db\ActiveQuery
+ */
+public function getContent($langId = null) {
+    if (!$langId)
+        $langId = Languages::currentLangId();
+
+    return $this->hasOne(PageContent::className(), ['parent_id' => 'id'])->where('lang_id = :lang_id', [':lang_id' => $langId]);
+}
+```
+
+5) Остальное дело за view. См. пример "page" или "post".
