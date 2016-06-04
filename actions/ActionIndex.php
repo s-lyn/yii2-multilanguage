@@ -3,22 +3,21 @@
 namespace pjhl\multilanguage\actions;
 
 use Yii;
-use yii\base\Action;
 use yii\data\ActiveDataProvider;
 
 class ActionIndex extends Action {
 
     public function run() {
         $controller = $this->controller;
-        $modelName = $controller::getModelName();
+        $modelName = $controller::mlConf('searchModel');
 
-        $dataProvider = new ActiveDataProvider([
-            'query' => $modelName::find()->with('contentAll'),
-        ]);
+        $searchModel = new $modelName();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $controller->render('index', [
+                    'searchModel' => $searchModel,
                     'dataProvider' => $dataProvider,
         ]);
     }
-    
+
 }

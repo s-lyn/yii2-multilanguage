@@ -28,8 +28,8 @@ class LanguageColumn extends DataColumn {
         foreach ($list as $id => $lang) {
             $items[] = Html::a($lang['name'], ['update', 'id'=>$model->id, 'lang_id'=>$lang['id']], [
                 'class'=> $this->issetContent($model, $lang['id']) 
-                        ? 'btn btn-primary' 
-                        : 'btn btn-default'
+                        ? 'btn btn-primary btn-xs' 
+                        : 'btn btn-default btn-xs',
                 ]);
         }
         return implode(' ', $items);

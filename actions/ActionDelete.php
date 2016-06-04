@@ -3,15 +3,14 @@
 namespace pjhl\multilanguage\actions;
 
 use Yii;
-use yii\base\Action;
 use yii\data\ActiveDataProvider;
 
 class ActionDelete extends Action {
 
     public function run($id, $lang_id=null) {
         $controller = $this->controller;
-        $modelName = $controller::getModelName();
-        $contentModelName = $controller::getContentModelName();
+        $modelName = $controller::mlConf('model');
+        $contentModelName = $controller::mlConf('contentModel');
 
         $transaction = Yii::$app->db->beginTransaction();
         try {
