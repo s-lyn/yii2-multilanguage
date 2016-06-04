@@ -7,8 +7,15 @@ use yii\helpers\Html;
 
 class LanguageColumn extends DataColumn {
     
-    public $header = 'Edit Language';
+    public $header = 'Edit';
     public $format = 'html';
+    // Use short names in button`s text
+    public $useShortNames = false;
+    // Action for links
+    public $useAction = 'update';
+    // Link`s styles
+    public $linkActiveClass = 'btn btn-primary btn-xs';
+    public $linkInactiveClass = 'btn btn-default btn-xs';
     
     private function issetContent($model, $lang_id) {
         if ($model && $model->contentAll && is_array($model->contentAll)) {
@@ -26,11 +33,21 @@ class LanguageColumn extends DataColumn {
         $list = Languages::all()->getConfig();
         $items = [];
         foreach ($list as $id => $lang) {
-            $items[] = Html::a($lang['name'], ['update', 'id'=>$model->id, 'lang_id'=>$lang['id']], [
-                'class'=> $this->issetContent($model, $lang['id']) 
-                        ? 'btn btn-primary btn-xs' 
-                        : 'btn btn-default btn-xs',
-                ]);
+            $isContentIsset = $this->issetContent($model, $lang['id']);
+            $text = $this->useShortNames
+                    ? $lang['locale']
+                    : $lang['name'];
+            $options = [
+                'class'=> $isContentIsset
+                        ? $this->linkActiveClass
+                        : $this->linkInactiveClass,
+            ];
+            $link = [
+                $this->useAction,
+                'id' => $model->id,
+                'lang_id' => $lang['id'],
+            ];
+            $items[] = Html::a($text, $link, $options);
         }
         return implode(' ', $items);
     }
