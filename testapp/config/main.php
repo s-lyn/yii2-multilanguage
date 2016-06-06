@@ -8,7 +8,8 @@ $config = [
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'bootstrap' => ['log'],
     'controllerNamespace' => 'testapp\controllers',
-    'language' => 'en-US',
+    'language'   => 'en',
+    'sourceLanguage' => 'en',
     'controllerMap' => [
         'fixture' => [
             'class' => 'yii\faker\FixtureController',
@@ -31,7 +32,6 @@ $config = [
             ],
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            'multilanguageHideDefaultPrefix' => true,
             'class' => 'pjhl\multilanguage\components\AdvancedUrlManager',
         ],
         'errorHandler' => [

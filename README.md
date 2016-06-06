@@ -7,8 +7,8 @@ The extension is under development.
 
 1) Set in Yii2 configuration file:
 ```php
-'language'   => 'en-EN',
-'sourceLanguage' => 'en-EN',
+'language'   => 'en',
+'sourceLanguage' => 'en',
 ```
 *Language* - default locale.
 

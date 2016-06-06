@@ -3,7 +3,6 @@
 namespace pjhl\multilanguage\helpers;
 use Yii;
 
-
 class Languages {
     
     private static $all = false;

@@ -25,5 +25,9 @@ class SiteController extends Controller {
     public function actionIndex() {
         return 'Nice works!';
     }
+    
+    public function actionTwo() {
+        return 'Two.';
+    }
 
 }
