@@ -6,7 +6,6 @@ use pjhl\multilanguage\Start;
 /* @var $this yii\web\View */
 
 $this->title = 'yii2-multilanguage test page';
-
 ?>
 <div class="site-index">
 
@@ -33,7 +32,7 @@ $this->title = 'yii2-multilanguage test page';
                         </tr> 
                         <tr>
                             <td>Url::toRoute: <?php echo Url::toRoute('index') ?>;</td>
-                        </tr> 
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -56,18 +55,18 @@ $this->title = 'yii2-multilanguage test page';
                 </table>
             </div>
         </div>
-        
+
         <div class="row">
             <div class="col-xs-4 col-xs-offset-6">
                 <ul class="nav nav-pills nav-stacked">
-                    <li role="presentation" <?php if ($mode==0) echo 'class="active"'; ?>>
-                        <a href="<?php echo Url::current(['mode'=>0]); ?>">Pretty url</a>
+                    <li role="presentation" <?php if ($mode == 0) echo 'class="active"'; ?>>
+                        <a href="<?php echo Url::current(['mode' => 0]); ?>">Pretty url</a>
                     </li>
-                    <li role="presentation" <?php if ($mode==1) echo 'class="active"'; ?>>
-                        <a href="<?php echo Url::current(['mode'=>1]); ?>">With script filename</a>
+                    <li role="presentation" <?php if ($mode == 1) echo 'class="active"'; ?>>
+                        <a href="<?php echo Url::current(['mode' => 1]); ?>">With script filename</a>
                     </li>
-                    <li role="presentation" <?php if ($mode==2) echo 'class="active"'; ?>>
-                        <a href="<?php echo Url::current(['mode'=>2]); ?>">Not pretty url</a>
+                    <li role="presentation" <?php if ($mode == 2) echo 'class="active"'; ?>>
+                        <a href="<?php echo Url::current(['mode' => 2]); ?>">Not pretty url</a>
                     </li>
                 </ul>
             </div>

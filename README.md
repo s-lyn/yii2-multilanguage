@@ -6,6 +6,7 @@ The extension is under development.
 Run tests:
 
 ```bash
+php -S localhost:8090 -t advanced
 composer run-script test
 ```
 

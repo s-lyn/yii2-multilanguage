@@ -7,7 +7,7 @@ use pjhl\multilanguage\components\helpers\Detect;
 
 class Start {
 
-    public static function run($event) {
+    public static function run($event = null) {
 
         $langExpected = static::detectExpectLang();
         if ($langExpected !== null) {
@@ -23,6 +23,7 @@ class Start {
     public static function detectExpectLang() {
 
         $langExpected = null;
+        $lang = null;
 
         // Save the language in a config of the yii2
         $lang_id = Detect::run();
@@ -37,7 +38,7 @@ class Start {
 
         // Detect current link language
         $current = static::detectLinkLang();
-        if ($current) {
+        if ($current && $lang) {
             if ($lang['id'] != $current['id']) {
                 $langExpected = $lang;
             }

@@ -4,13 +4,16 @@
 /* @var $content string */
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
 use common\widgets\Alert;
+use pjhl\multilanguage\assets\ChangeLanguageAsset;
 
 AppAsset::register($this);
+ChangeLanguageAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -36,6 +39,7 @@ AppAsset::register($this);
     ]);
     $menuItems = [
         ['label' => 'Home', 'url' => ['/site/index']],
+        ['label' => 'Test lang', 'url' => ['/site/lang']],
         
     ];
     echo Nav::widget([
@@ -53,6 +57,11 @@ AppAsset::register($this);
         <?= $content ?>
     </div>
 </div>
+    
+<footer>
+    <a href="<?php echo Url::toRoute(['site/change', 'lang'=>'en']) ?>" class="-multilanguage-set" data-language="1">ChangeEN</a>
+    <a href="<?php echo Url::toRoute(['site/change', 'lang'=>'ru']) ?>" class="-multilanguage-set" data-language="2">ChangeRU</a>
+</footer>
 
 <?php $this->endBody() ?>
 </body>
