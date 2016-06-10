@@ -28,14 +28,14 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        /*
+        'request' => [
+            'class' => 'pjhl\multilanguage\components\AdvancedRequest'
+        ],
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            'rules' => [
-            ],
+            'class' => 'pjhl\multilanguage\components\AdvancedUrlManager',
         ],
-        */
     ],
     'params' => $params,
 ];

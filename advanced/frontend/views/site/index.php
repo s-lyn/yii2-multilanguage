@@ -1,51 +1,85 @@
 <?php
 
+use yii\helpers\Url;
+use pjhl\multilanguage\Start;
+
 /* @var $this yii\web\View */
 
-$this->title = 'My Yii Application';
+$this->title = 'yii2-multilanguage test page';
+
 ?>
 <div class="site-index">
-
-    <div class="jumbotron">
-        <h1>Congratulations!</h1>
-
-        <p class="lead">You have successfully created your Yii-powered application.</p>
-
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
-    </div>
 
     <div class="body-content">
 
         <div class="row">
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <table class="table table-bordered table-striped">
+                    <tbody>
+                        <tr>
+                            <td>Index page works.</td>
+                        </tr> 
+                        <tr>
+                            <td>Locale: <?php echo Yii::$app->language ?>;</td>
+                        </tr> 
+                        <tr>
+                            <td>Url::home: <?php echo Url::home() ?>;</td>
+                        </tr> 
+                        <tr>
+                            <td>Url::current: <?php echo Url::current() ?>;</td>
+                        </tr> 
+                        <tr>
+                            <td>Url::to: <?php echo Url::to('/') ?>;</td>
+                        </tr> 
+                        <tr>
+                            <td>Url::toRoute: <?php echo Url::toRoute('index') ?>;</td>
+                        </tr> 
+                    </tbody>
+                </table>
             </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <table class="table table-bordered table-striped">
+                    <tbody>
+                        <tr>
+                            <td>path info:</td>
+                            <td><?php echo Yii::$app->request->getPathInfo() ?></td>
+                        </tr>
+                        <tr>
+                            <td>Start::detectLinkLang:</td>
+                            <td><?php echo Start::detectLinkLang()['id'] ?></td>
+                        </tr>
+                        <tr>
+                            <td>Start::redirectLink(detectExpectLang):</td>
+                            <td><?php echo Start::redirectLink(Start::detectExpectLang()) ?></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
+        </div>
+        
+        <div class="row">
+            <div class="col-xs-8">
+                <a class="btn btn-link" href="/site/index">/site/index</a>
+                <a class="btn btn-link" href="/index.php/site/index">/index.php/site/index</a>
+                <a class="btn btn-link" href="/index.php?r=site/index">/index.php?r=site/index</a>
+                <br><br>
+                <a class="btn btn-link" href="/ru/site/index">/ru/site/index</a>
+                <a class="btn btn-link" href="/index.php/ru/site/index">/index.php/ru/site/index</a>
+                <a class="btn btn-link" href="/index.php?r=site/index&x-language-url=ru">/index.php?r=site/index&x-language-url=ru</a>
+                <br><br>
+            </div>
+            <div class="col-xs-4">
+                <ul class="nav nav-pills nav-stacked">
+                    <li role="presentation" <?php if ($mode==0) echo 'class="active"'; ?>>
+                        <a href="<?php echo Url::current(['mode'=>0]); ?>">Pretty url</a>
+                    </li>
+                    <li role="presentation" <?php if ($mode==1) echo 'class="active"'; ?>>
+                        <a href="<?php echo Url::current(['mode'=>1]); ?>">With script filename</a>
+                    </li>
+                    <li role="presentation" <?php if ($mode==2) echo 'class="active"'; ?>>
+                        <a href="<?php echo Url::current(['mode'=>2]); ?>">Not pretty url</a>
+                    </li>
+                </ul>
             </div>
         </div>
 

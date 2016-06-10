@@ -25,20 +25,21 @@ composer run-script test
     [
         'id' => 1,
         'url' => 'en',
-        'locale' => 'en-EN',
+        'locale' => 'en',
         'name' => 'English',
         'default' => true,
     ],
     [
         'id' => 2,
         'url' => 'ru',
-        'locale' => 'ru-RU',
+        'locale' => 'ru',
         'name' => 'Русский',
     ],
 ],
 ```
 \* Use unique integer ID.
-\*\* Default - default language.
+\*\* Default - default language (/en /ru - standard, / - default).
+Do not set any default language so that the script always redirects to the language subfolder.
 
 3) Install the package through composer:
 
@@ -53,10 +54,16 @@ composer run-script test
     'urlManager' => [
         'enablePrettyUrl' => true,
         'showScriptName' => false,
-        'multilanguageHideDefaultPrefix' => true,
         'class' => 'pjhl\multilanguage\components\AdvancedUrlManager',
     ],
 ],
+```
+
+5) Update your /web/index.php :
+```php
+$application = new yii\web\Application($config);
+$application->on($application::EVENT_BEFORE_ACTION, ['\pjhl\multilanguage\Start', 'run']);
+$application->run();
 ```
 
 ## Controllers

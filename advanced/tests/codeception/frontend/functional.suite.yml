@@ -12,6 +12,15 @@ modules:
       - Filesystem
       - Yii2
       - tests\codeception\common\_support\FixtureHelper
+      - Db
     config:
         Yii2:
             configFile: '../config/frontend/functional.php'
+        Db:
+         dsn: 'sqlite:../../_output/test.sqlite'
+         user: ''
+         password: ''
+         dump: 'tests/_data/dump.sql'
+         populate: false
+         cleanup: false
+         reconnect: false
