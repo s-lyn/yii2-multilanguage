@@ -3,6 +3,13 @@ Yii2 Multi Language extension
 
 The extension is under development.
 
+Run tests:
+
+```bash
+composer run-script test
+```
+
+
 ## Installation
 
 1) Set in Yii2 configuration file:

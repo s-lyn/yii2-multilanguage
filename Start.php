@@ -48,6 +48,14 @@ class Start {
      * @param array $lang
      */
     private static function makeRedirectTo($lang) {
+        
+        // Do not make redirect on test env
+        $isTestEnv = defined('YII_ENV') && YII_ENV === 'test';
+        $isTestEnv2 = defined('YII_ENV_TEST') && YII_ENV_TEST;
+        if ($isTestEnv || $isTestEnv2) {
+            return;
+        }
+        
         if (Yii::$app->getRequest()->getMethod() === 'GET' && !Yii::$app->getRequest()->isAjax) {
             $isDefault = isset($lang['default']) && $lang['default'];
             $url = \yii\helpers\Url::current([
