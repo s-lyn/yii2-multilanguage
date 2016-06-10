@@ -15,24 +15,19 @@ class AdvancedUrlManager extends UrlManager {
         $current = LangHelper::getLanguageByParam('locale', Yii::$app->language);
         
         // Url's language such as "en"
-        $url_lang = null;
-
-        if (isset($params['x-language-url']) && !$params['x-language-url']) {
-            $params['x-language-url'] = $default['url'];
-        }
-
-        if (isset($params['x-language-url']) && Languages::all()->getConfigByParam('url', $params['x-language-url'])) {
-            $isDefault = isset($default['default']) && $default['default'];
-            $url_lang = ($params['x-language-url'] === $default['url'] && $isDefault) ? '' : $params['x-language-url'];
+        $url_lang = Yii::$app->language;
+        
+        // If isset lang param
+        if (isset($params['x-language-url'])) {
+            // If exists language
+            $xLang = LangHelper::getLanguageByParam('url', $params['x-language-url']);
+            if ($xLang) {
+                $url_lang = $xLang['url'];
+            }
             // Delete if is pretty url
             if ($this->enablePrettyUrl) {
                 unset($params['x-language-url']);
             }
-        }
-
-        if ($url_lang === null) {
-            // Иначе подставляем текущий язык
-            $url_lang = Yii::$app->request->getLanguageInurl();
         }
 
         $url = parent::createUrl($params);
