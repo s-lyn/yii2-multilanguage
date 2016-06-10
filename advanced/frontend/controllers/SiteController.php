@@ -30,7 +30,6 @@ class SiteController extends Controller {
         $mode = Yii::$app->request->queryParams['mode']
                 ? Yii::$app->request->queryParams['mode']
                 : 0;
-        Yii::$app->language = 'ru';
         switch ($mode) {
             case 1:
                 Yii::$app->urlManager->enablePrettyUrl = true;

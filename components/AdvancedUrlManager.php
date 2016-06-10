@@ -11,9 +11,6 @@ class AdvancedUrlManager extends UrlManager {
 
     public function createUrl($params) {
 
-        $default = Languages::all()->getConfigDefault();
-        $current = LangHelper::getLanguageByParam('locale', Yii::$app->language);
-        
         // Url's language such as "en"
         $url_lang = Yii::$app->language;
         
@@ -24,22 +21,36 @@ class AdvancedUrlManager extends UrlManager {
             if ($xLang) {
                 $url_lang = $xLang['url'];
             }
-            // Delete if is pretty url
-            if ($this->enablePrettyUrl) {
-                unset($params['x-language-url']);
-            }
+        }
+        
+        $current = LangHelper::getLanguageByParam('locale', $url_lang);
+        $isDefault = isset($current['default']) && $current['default'];
+        
+        // Delete if is pretty url
+        if ($this->enablePrettyUrl || $isDefault) {
+            unset($params['x-language-url']);
         }
 
         $url = parent::createUrl($params);
-        if ($url_lang) {
+        if ($current) {
+            // Is curent language 
+            
             // Pretty url
             if ($this->enablePrettyUrl && !$this->showScriptName) {
                 $pattern = "/^" . preg_quote($this->baseUrl, '/') . "/";
-                $url = preg_replace($pattern, $this->baseUrl . '/' . $url_lang, $url );
+                $replaceTo = $this->baseUrl;
+                if (!$isDefault) {
+                    $replaceTo .= '/' . $url_lang;
+                }
+                $url = preg_replace($pattern, $replaceTo, $url );
             } else if ($this->enablePrettyUrl && $this->showScriptName) {
                 // Pretty url with showScriptName 
                 $pattern = "/^" . preg_quote($this->scriptUrl, '/') . "/";
-                $url = preg_replace($pattern, $this->scriptUrl . '/' . $url_lang , $url );
+                $replaceTo = $this->baseUrl;
+                if (!$isDefault) {
+                    $replaceTo .= '/' . $url_lang;
+                }
+                $url = preg_replace($pattern, $replaceTo, $url );
             }
         }
         return $url;

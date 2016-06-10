@@ -12,7 +12,7 @@ class Start {
         $langExpected = static::detectExpectLang();
         if ($langExpected !== null) {
             // Make redirect to correct language url
-            static::makeRedirectTo($lang);
+            static::makeRedirectTo($langExpected);
         }
     }
 
@@ -42,7 +42,6 @@ class Start {
                 $langExpected = $lang;
             }
         }
-
         return $langExpected;
     }
 
@@ -92,7 +91,6 @@ class Start {
      * @param array $lang
      */
     private static function makeRedirectTo($lang) {
-        return; ##!! Заглушка
         $link = static::redirectLink($lang);
 
         if ($link !== null) {

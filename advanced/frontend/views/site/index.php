@@ -58,17 +58,7 @@ $this->title = 'yii2-multilanguage test page';
         </div>
         
         <div class="row">
-            <div class="col-xs-8">
-                <a class="btn btn-link" href="/site/index">/site/index</a>
-                <a class="btn btn-link" href="/index.php/site/index">/index.php/site/index</a>
-                <a class="btn btn-link" href="/index.php?r=site/index">/index.php?r=site/index</a>
-                <br><br>
-                <a class="btn btn-link" href="/ru/site/index">/ru/site/index</a>
-                <a class="btn btn-link" href="/index.php/ru/site/index">/index.php/ru/site/index</a>
-                <a class="btn btn-link" href="/index.php?r=site/index&x-language-url=ru">/index.php?r=site/index&x-language-url=ru</a>
-                <br><br>
-            </div>
-            <div class="col-xs-4">
+            <div class="col-xs-4 col-xs-offset-6">
                 <ul class="nav nav-pills nav-stacked">
                     <li role="presentation" <?php if ($mode==0) echo 'class="active"'; ?>>
                         <a href="<?php echo Url::current(['mode'=>0]); ?>">Pretty url</a>
