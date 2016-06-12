@@ -4,7 +4,7 @@ namespace pjhl\multilanguage\actions;
 
 use Yii;
 use yii\data\ActiveDataProvider;
-use pjhl\multilanguage\helpers\Languages;
+use pjhl\multilanguage\LangHelper;
 
 class ActionUpdate extends Action {
 
@@ -14,7 +14,7 @@ class ActionUpdate extends Action {
         $contentModelName = $controller::mlConf('contentModel');
 
         if (!$lang_id)
-            $lang_id = Languages::currentLangId();
+            $lang_id = LangHelper::getLanguage('id');
         $model = $controller->findModel($id);
         $session = Yii::$app->session;
         

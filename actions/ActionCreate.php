@@ -4,7 +4,7 @@ namespace pjhl\multilanguage\actions;
 
 use Yii;
 use yii\data\ActiveDataProvider;
-use pjhl\multilanguage\helpers\Languages;
+use pjhl\multilanguage\LangHelper;
 
 class ActionCreate extends Action {
 
@@ -16,7 +16,7 @@ class ActionCreate extends Action {
         $model = new $modelName();
         $session = Yii::$app->session;
         $modelContent = new $contentModelName();
-        $modelContent->lang_id = Languages::currentLangId();
+        $modelContent->lang_id = LangHelper::getLanguage('id');
         
         if ($model->load(Yii::$app->request->post()) && $modelContent->load(Yii::$app->request->post())) {
             

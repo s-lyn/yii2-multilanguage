@@ -2,7 +2,7 @@
 
 namespace pjhl\multilanguage\components\grid;
 use yii\grid\DataColumn;
-use pjhl\multilanguage\helpers\Languages;
+use pjhl\multilanguage\LangHelper;
 use yii\helpers\Html;
 
 class LanguageColumn extends DataColumn {
@@ -29,10 +29,11 @@ class LanguageColumn extends DataColumn {
     }
     
     public function getDataCellValue($model, $key, $index) {
-        
-        $list = Languages::all()->getConfig();
+
+        $list = LangHelper::languages();
         $items = [];
-        foreach ($list as $id => $lang) {
+        foreach ($list as $lang) {
+            $id = $lang['id'];
             $isContentIsset = $this->issetContent($model, $lang['id']);
             $text = $this->useShortNames
                     ? $lang['locale']

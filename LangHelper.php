@@ -50,5 +50,20 @@ class LangHelper {
         }
         return $lang;
     }
-
+    
+    /**
+     * Returns regex pattern for language urls.
+     * Ex.: "(en)|(ru)"
+     * @return string   Quoted regexp
+     */
+    public static function pattern() {
+        $list = [];
+        foreach (self::languages() as $lang) {
+            if ($lang['url']) {
+                $list[] = '('.preg_quote($lang['url'], '/').')';
+            }
+        }
+        return implode('|',$list);
+    }
+    
 }

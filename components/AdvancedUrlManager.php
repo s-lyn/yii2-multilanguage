@@ -4,7 +4,6 @@ namespace pjhl\multilanguage\components;
 
 use Yii;
 use yii\web\UrlManager;
-use pjhl\multilanguage\helpers\Languages;
 use pjhl\multilanguage\LangHelper;
 
 class AdvancedUrlManager extends UrlManager {

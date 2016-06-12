@@ -4,7 +4,6 @@ namespace pjhl\multilanguage\components;
 
 use Yii;
 use yii\web\Request;
-use pjhl\multilanguage\helpers\Languages;
 use pjhl\multilanguage\LangHelper;
 
 class AdvancedRequest extends Request {
@@ -17,7 +16,7 @@ class AdvancedRequest extends Request {
 
     public function getPathInfo() {
         $pathInfo = parent::getPathInfo();
-        $pattern = Languages::all()->pattern(); ##!! Move to LangHelper
+        $pattern = LangHelper::pattern();
 
         if (preg_match("/^($pattern)\/(.*)/", $pathInfo, $arr)) {
             $this->lang_url = $arr[1];

@@ -59,8 +59,8 @@ ChangeLanguageAsset::register($this);
 </div>
     
 <footer>
-    <a href="<?php echo Url::toRoute(['site/change', 'lang'=>'en']) ?>" class="-multilanguage-set" data-language="1">ChangeEN</a>
-    <a href="<?php echo Url::toRoute(['site/change', 'lang'=>'ru']) ?>" class="-multilanguage-set" data-language="2">ChangeRU</a>
+    <a href="<?php echo Url::toRoute(['site/change', 'lang'=>'en']) ?>" class="multilanguage-set" data-language="1">ChangeEN</a>
+    <a href="<?php echo Url::toRoute(['site/change', 'lang'=>'ru']) ?>" class="multilanguage-set" data-language="2">ChangeRU</a>
 </footer>
 
 <?php $this->endBody() ?>
