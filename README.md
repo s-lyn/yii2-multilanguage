@@ -1,7 +1,21 @@
 Yii2 Multi Language extension
 =============================
 
-The extension is under development.
+This extension allows you to do multi-language sites on yii2.
+Instead, an informal specification uses the article
+["Multi-regional and multilingual sites" (Google)](https://support.google.com/webmasters/answer/182192?hl=en).
+
+Эта инструкция доступна на [русском языке](./README.ru.md).
+
+Features
+--------
+
+*   Supports an unlimited number of languages.
+
+
+Note: the extension is under development.
+
+
 
 Run tests:
 
