@@ -38,4 +38,5 @@ return [
         ],
     ],
     'params' => $params,
+    'on beforeAction' => ['\pjhl\multilanguage\Start', 'run'],
 ];

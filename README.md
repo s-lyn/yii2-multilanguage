@@ -74,11 +74,9 @@ Do not set any default language so that the script always redirects to the langu
 ],
 ```
 
-5) Update your /web/index.php :
+5) Set in Yii2 configuration file:
 ```php
-$application = new yii\web\Application($config);
-$application->on($application::EVENT_BEFORE_ACTION, ['\pjhl\multilanguage\Start', 'run']);
-$application->run();
+'on beforeAction' => ['\pjhl\multilanguage\Start', 'run'],
 ```
 
 ## Controllers
