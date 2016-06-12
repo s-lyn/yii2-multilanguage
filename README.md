@@ -79,17 +79,6 @@ Do not set any default language so that the script always redirects to the langu
 'on beforeAction' => ['\pjhl\multilanguage\Start', 'run'],
 ```
 
-## Controllers
-
-All your controllers needs to extend **AdvancedController** like this:
-```php
-use pjhl\multilanguage\components\AdvancedController;
-
-class SiteController extends AdvancedController {
-    
-}
-```
-
 ## Language selector
 
 Add this code in your view:
