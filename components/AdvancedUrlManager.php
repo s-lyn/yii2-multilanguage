@@ -7,7 +7,7 @@ use yii\web\UrlManager;
 use pjhl\multilanguage\LangHelper;
 
 class AdvancedUrlManager extends UrlManager {
-
+    
     public function createUrl($params) {
 
         // Url's language such as "en"
@@ -15,6 +15,11 @@ class AdvancedUrlManager extends UrlManager {
         
         // If isset lang param
         if (isset($params['x-language-url'])) {
+            // Do not change url
+            if ($params['x-language-url'] === false) {
+                unset($params['x-language-url']);
+                return parent::createUrl($params);
+            }
             // If exists language
             $xLang = LangHelper::getLanguageByParam('url', $params['x-language-url']);
             if ($xLang) {

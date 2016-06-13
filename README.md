@@ -13,6 +13,9 @@ Features
 *   Supports an unlimited number of languages.
 
 
+$params['x-language-url'] === false - show default url.
+
+
 Note: the extension is under development.
 
 
