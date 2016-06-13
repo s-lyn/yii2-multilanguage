@@ -15,25 +15,19 @@ class ActionUpdate extends Action {
 
         if (!$lang_id)
             $lang_id = LangHelper::getLanguage('id');
-        $model = $controller->findModel($id);
-        $session = Yii::$app->session;
-        
-        $modelContent = $model->getContent($lang_id)->one();
-        if (!$modelContent) {
-            $modelContent = new $contentModelName();
-            $modelContent->lang_id = $lang_id;
+        $model = $controller->findModel($id, $lang_id);
+        if (!$model->content) {
+            $model->populateRelation('content', new $contentModelName());
+            $model->content->lang_id = $lang_id;
+            $model->content->parent_id = $model->id;
         }
-        
-        if ($model->load(Yii::$app->request->post()) && $modelContent->load(Yii::$app->request->post())) {
-            
-            $modelContent->lang_id = $lang_id;
-            $modelContent->parent_id = $model->id;
+        if ($model->load(Yii::$app->request->post()) && $model->content->load(Yii::$app->request->post())) {
             
             $isSaveSuccess = false;
             $transaction = Yii::$app->db->beginTransaction();
             try {
                 $model->save();
-                $modelContent->save();
+                $model->content->save();
                 $transaction->commit();
                 $isSaveSuccess = true;
             } catch(\Exception $e) {
@@ -56,7 +50,7 @@ class ActionUpdate extends Action {
         }
         return $controller->render('update', [
             'model' => $model,
-            'modelContent' => $modelContent,
+            'modelContent' => $model->content,
         ]);
      }
     

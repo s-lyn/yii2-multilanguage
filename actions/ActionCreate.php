@@ -14,19 +14,17 @@ class ActionCreate extends Action {
         $contentModelName = $controller::mlConf('contentModel');
 
         $model = new $modelName();
-        $session = Yii::$app->session;
-        $modelContent = new $contentModelName();
-        $modelContent->lang_id = LangHelper::getLanguage('id');
+        $model->populateRelation('content', new $contentModelName());
+        $model->content->lang_id = LangHelper::getLanguage('id');
         
-        if ($model->load(Yii::$app->request->post()) && $modelContent->load(Yii::$app->request->post())) {
-            
+        if ($model->load(Yii::$app->request->post()) && $model->content->load(Yii::$app->request->post())) {
             $isSaveSuccess = false;
             $transaction = Yii::$app->db->beginTransaction();
             try {
                 $res = $model->save();
                 if ($res) {
-                    $modelContent->parent_id = $model->id;
-                    $modelContent->save();
+                    $model->content->parent_id = $model->id;
+                    $model->content->save();
                     $transaction->commit();
                     $isSaveSuccess = true;
                 } else {
@@ -46,14 +44,13 @@ class ActionCreate extends Action {
                 return $controller->redirect([
                     $redirectAction,
                     'id' => $model->id,
-                    'lang_id' => $modelContent->lang_id,
+                    'lang_id' => $model->content->lang_id,
                 ]);
             }
         }
         
         return $controller->render('create', [
-            'model' => $model,
-            'modelContent' => $modelContent,
+            'model' => $model
         ]);
         
     }

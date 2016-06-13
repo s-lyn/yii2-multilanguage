@@ -16,7 +16,6 @@ class ActionDelete extends Action {
         try {
             // Удаление всех языковых версий
             $contentModelName::deleteAll(['parent_id'=>$id]);
-            ##!! Думаю можно переопределить метод delete() в меделе Page, чтоб удалять и всех потомков
             // Удаление записи страницы
             $controller->findModel($id)->delete();
             $transaction->commit();
