@@ -14,15 +14,15 @@ This instruction is available [in English](./README.md).
 ----------------------
 
 *   Поддержка неограниченного количества языков.
-*   Язык страницы вставляется в ссылку, что позволяет поисковым роботам корректно
-индексировать сайт.
+*   Язык страницы вставляется в ссылку как директория.
 *   Корректная работа с настройками yii\web\UrlManager: *enablePrettyUrl* и *showScriptName*.
 *   Корректная работа сайта в подкаталогах (например, http://example.com/sub/directory/frontend/web/ru/site/login).
-*   Возможность указать язык принудительно с помощью cookie. В этом случае скрипт
+*   Возможность указать язык принудительно с помощью cookies. В этом случае скрипт
 будет делать редирект, если пользователь открыл страницу с другим языком.
 *   Редиректы только для GET-запросов. POST, Ajax XHR будут корректно работать.
-*   Есть хелпер для переключения языка (легко импользовать ссылки или bootstrap dropdown).
+*   Есть хелпер для переключения языка (легко использовать ссылки или bootstrap dropdown).
 *   CRUD-actions для быстрой разработки модулей админки.
+*   Поддержка `<link rel="alternate" ...` (TODO: сделать справку).
 
 
 Примеры ссылок
@@ -34,22 +34,16 @@ This instruction is available [in English](./README.md).
 *   http://example.com/ru/site/login
 
 Так будут выглядить ссылки из настройками *enablePrettyUrl=true; showScriptName=false*.
-Примеры для других настроек *yii\web\UrlManager* можно посмотреть тут.
-
-##!! Todo : добавить страницу справки.
-##!! Todo2: заменить ссылки на рабочий пример
+Примеры для других настроек *yii\web\UrlManager* можно посмотреть тут (TODO: сделать справку).
 
 
-Установка и настройка расширения (frontend)
--------------------------------------------
+Установка и настройка расширения
+--------------------------------
 
-##!! Todo3: Добавить инструкцию по установке отдельным файлом
-
-
-Многоязычные CRUD (backend)
----------------------------
-
-##!! Todo4: Добавить инструкцию по установке отдельным файлом
+*   [Installing and configuring extensions](./docs/INSTALL.ru.md)
+*   [Switch language](./docs/LANG-SWITCH.ru.md)
+*   [LangHelper](./docs/LANG-HELPER.ru.md)
+*   [FAQ](./docs/FAQ.ru.md)
 
 
 Запуск тестов
@@ -63,6 +57,11 @@ composer run-script test
 Перед запуском тестов у вас должен быть установлен [codeception](http://codeception.com/).
 
 
+Task list
+---------
 
-
-
+- [ ] Rewrite `Controller->findModel(...)`
+- [ ] Make a working example of the module "page"
+- [ ] Cover the test more code
+- [ ] Problem with text site/error. Session Flash Data (?)
+- [ ] Detect language by IP (country) (?)

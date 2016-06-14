@@ -1,7 +1,7 @@
 {
     "name": "pjhl/yii2-multilanguage",
     "description": "Multi Language support for Yii2 Framework.",
-    "keywords": ["yii2", "multilanguage", "language", "lang", "translate", "мультиязычность"],
+    "keywords": ["yii2", "multi", "language", "lang", "translate", "мультиязычность","i18n","translate","lingual","перевод","локализация"],
     "homepage": "https://github.com/pjhl/yii2-multilanguage",
     "type": "yii2-extension",
     "license": "MIT",
