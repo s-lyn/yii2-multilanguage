@@ -167,7 +167,9 @@ use pjhl\multilanguage\LangHelper;
             <?= $form->field($model, 'date')->textInput() ?>
         </div>
         <div class="col-md-offset-8 col-md-4">
-            <?= $form->field($model->content, 'lang_id')->dropDownList(ArrayHelper::map(LangHelper::languages(), 'id', 'name'), array('disabled'=>!$model->isNewRecord)) ?>
+            <?= $form->field($model->content, 'lang_id')
+                    ->dropDownList(ArrayHelper::map(LangHelper::languages(), 'id', 'name')
+                            , array('disabled'=>!$model->isNewRecord)) ?>
         </div>
     </div>
     
@@ -178,7 +180,11 @@ use pjhl\multilanguage\LangHelper;
     <?= $form->field($model->content, 'text')->textarea(array('rows'=>15)) ?>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? Yii::t('page', 'Create') : Yii::t('page', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord 
+                ? Yii::t('page', 'Create') 
+                : Yii::t('page', 'Update'), ['class' => $model->isNewRecord 
+                        ? 'btn btn-success' 
+                        : 'btn btn-primary']) ?>
     </div>
     <?php ActiveForm::end(); ?>
 
@@ -192,5 +198,5 @@ P.S.
 ----
 
 Реализацию бекенда с помощью views можно делать по разному.
-My realization can be found in the module pjhl/yii2-pages (TODO: create static pages module).
-There is a working demo.
+Мою реализацию можно в модуле pjhl/yii2-pages (TODO: создать модуль статических сраниц),
+там же есть работая демка (TODO: создать демку).

@@ -10,14 +10,14 @@ Let us consider a step-by-step creation of the module on the example of a simple
 
 #### Table page:
 
-Поле            | Тип           | Description
+Field           | Type          | Description
 ------------    | ------------- | -------------
 id              | integer       | PrimaryKey
 ...             | ...           | Other fields for which translation is not needed (date, status, etc)
 
 #### Table page_content:
 
-Поле            | Тип           | Description
+Field           | Type          | Description
 ------------    | ------------- | -------------
 id              | integer       | PrimaryKey
 parent_id       | integer       | ForeignKey -> page.id
@@ -167,7 +167,9 @@ use pjhl\multilanguage\LangHelper;
             <?= $form->field($model, 'date')->textInput() ?>
         </div>
         <div class="col-md-offset-8 col-md-4">
-            <?= $form->field($model->content, 'lang_id')->dropDownList(ArrayHelper::map(LangHelper::languages(), 'id', 'name'), array('disabled'=>!$model->isNewRecord)) ?>
+            <?= $form->field($model->content, 'lang_id')
+                    ->dropDownList(ArrayHelper::map(LangHelper::languages(), 'id', 'name')
+                            , array('disabled'=>!$model->isNewRecord)) ?>
         </div>
     </div>
     
@@ -178,7 +180,11 @@ use pjhl\multilanguage\LangHelper;
     <?= $form->field($model->content, 'text')->textarea(array('rows'=>15)) ?>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? Yii::t('page', 'Create') : Yii::t('page', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord 
+                ? Yii::t('page', 'Create') 
+                : Yii::t('page', 'Update'), ['class' => $model->isNewRecord 
+                        ? 'btn btn-success' 
+                        : 'btn btn-primary']) ?>
     </div>
     <?php ActiveForm::end(); ?>
 
@@ -192,5 +198,5 @@ P.S.
 ----
 
 Implementation backend via views can be done in different ways.
-My realization in the module pjhl/yii2-pages (TODO: создать модуль статических сраниц),
-там же есть работая демка (TODO: создать демку).
+My realization can be found in the module pjhl/yii2-pages (TODO: create static pages module).
+There is a working demo.
