@@ -1,31 +1,31 @@
-Создание модели и контроллеров
-==============================
+Creating models and controllers
+===============================
 
-Для мультиязычности создается две модели:
+Create two models:
 
-1) Основная модель
-2) Переводы
+1) The basic model
+2) Translations
 
-Рассмотрим шаг за шагом создание модуля на примере простых страниц.
+Let us consider a step-by-step creation of the module on the example of a simple pages.
 
-#### Таблица page:
+#### Table page:
 
-Поле            | Тип           | Описание
+Поле            | Тип           | Description
 ------------    | ------------- | -------------
 id              | integer       | PrimaryKey
-...             | ...           | Другие поля, для которых перевод не нужен (дата, статус и т.д)
+...             | ...           | Other fields for which translation is not needed (date, status, etc)
 
-#### Таблица page_content:
+#### Table page_content:
 
-Поле            | Тип           | Описание
+Поле            | Тип           | Description
 ------------    | ------------- | -------------
 id              | integer       | PrimaryKey
-parent_id       | integer       | ForeignKey (внешний ключ) -> page.id
-lang_id         | smallint      | ID языка
-name            | varchar(255)  | Название страницы
-text            | text          | Текст страницы
+parent_id       | integer       | ForeignKey -> page.id
+lang_id         | smallint      | Language ID
+name            | varchar(255)  | Page name
+text            | text          | Page text
 
-1) Создаем модель Page.php
+1) Create model Page.php
 --------------------------
 
 ```php
@@ -52,7 +52,7 @@ class Page extends \yii\db\ActiveRecord {
 }
 ```
 
-2) Создаем модель PageContent.php
+2) Create model PageContent.php
 ---------------------------------
 
 ```php
@@ -71,7 +71,7 @@ class PageContent extends \yii\db\ActiveRecord {
 }
 ```
 
-3) Создадим PageController.php (backend)
+3) Create PageController.php (backend)
 ----------------------------------------
 
 ```php
@@ -137,7 +137,7 @@ class PageController extends Controller {
 }
 ```
 
-4) Сделать правки в views/page/* (backend)
+4) Create views/page/* (backend)
 ------------------------------------------
 
 _form.php:
@@ -185,12 +185,12 @@ use pjhl\multilanguage\LangHelper;
 </div>
 ```
 
-Изменения других view касаются только использования для переводов
-`$model->content->...` вместо привычного `$model->...`.
+Changes to other views apply only to use
+`$model->content->...` instead of `$model->...` for translates.
 
 P.S.
 ----
 
-Реализацию бекенда с помощью views можно делать по разному.
-My realization can be found in the module pjhl/yii2-pages (TODO: create static pages module).
-There is a working demo.
+Implementation backend via views can be done in different ways.
+My realization in the module pjhl/yii2-pages (TODO: создать модуль статических сраниц),
+там же есть работая демка (TODO: создать демку).

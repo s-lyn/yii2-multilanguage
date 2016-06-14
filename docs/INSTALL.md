@@ -70,6 +70,5 @@ After install
 -------------
 
 Okay, you have installed the extension.
-Now you can configure [language switching](.),
-[creating multilingual models ](.)
-and [CRUD](.).
+Now you can configure [language switching](./LANG-SWITCH.md),
+[creating multilingual models and CRUD](./MODELS.md).

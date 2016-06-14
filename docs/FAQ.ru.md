@@ -34,7 +34,7 @@ yii\helpers\Url::toRoute(['site/login', 'x-language-url'=>false]); // "/site/log
 
 Язык пользователя определяется в приоритете:
 
-1)   `$_COOKIE['x-language-id']`
-2)   HTTP_ACCEPT_LANGUAGE
-3)   Locale `Yii::$app->language`
+1.   `$_COOKIE['x-language-id']`
+2.   HTTP_ACCEPT_LANGUAGE
+3.   Locale `Yii::$app->language`
 

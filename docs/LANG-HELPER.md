@@ -6,7 +6,6 @@ but a more convenient data can be obtained using helper:
 
 ```php
 <?php
-
 use pjhl\mltilanguage\LangHelper;
 ```
 

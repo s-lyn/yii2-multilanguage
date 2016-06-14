@@ -33,7 +33,7 @@ How the script identifies the user's language?
 
 User language is identified priority:
 
-1)   `$_COOKIE['x-language-id']`
-2)   HTTP_ACCEPT_LANGUAGE
-3)   Locale `Yii::$app->language`
+1.   `$_COOKIE['x-language-id']`
+2.   HTTP_ACCEPT_LANGUAGE
+3.   Locale `Yii::$app->language`
 

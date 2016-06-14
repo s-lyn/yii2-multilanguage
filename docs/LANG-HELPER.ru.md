@@ -6,7 +6,6 @@ LangHelper
 
 ```php
 <?php
-
 use pjhl\mltilanguage\LangHelper;
 ```
 

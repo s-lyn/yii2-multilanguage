@@ -33,17 +33,18 @@ This instruction is available [in English](./README.md).
 *   http://example.com/en/site/login
 *   http://example.com/ru/site/login
 
-Так будут выглядить ссылки из настройками *enablePrettyUrl=true; showScriptName=false*.
+Так будут выглядеть ссылки из настройками *enablePrettyUrl=true; showScriptName=false*.
 Примеры для других настроек *yii\web\UrlManager* можно посмотреть тут (TODO: сделать справку).
 
 
 Установка и настройка расширения
 --------------------------------
 
-*   [Installing and configuring extensions](./docs/INSTALL.ru.md)
-*   [Switch language](./docs/LANG-SWITCH.ru.md)
+*   [Установка и настройка расширения](./docs/INSTALL.ru.md)
+*   [Смена языка](./docs/LANG-SWITCH.ru.md)
+*   [Создание модели и контроллеров](./docs/MODELS.ru.md)
 *   [LangHelper](./docs/LANG-HELPER.ru.md)
-*   [FAQ](./docs/FAQ.ru.md)
+*   [Часто задаваемые вопросы](./docs/FAQ.ru.md)
 
 
 Запуск тестов

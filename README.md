@@ -42,6 +42,7 @@ Installing and configuring extensions
 
 *   [Installing and configuring extensions](./docs/INSTALL.md)
 *   [Switch language](./docs/LANG-SWITCH.md)
+*   [Creating models and controllers](./docs/MODELS.md)
 *   [LangHelper](./docs/LANG-HELPER.md)
 *   [FAQ](./docs/FAQ.md)
 
